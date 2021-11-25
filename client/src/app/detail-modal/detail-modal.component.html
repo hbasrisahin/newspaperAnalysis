@@ -1,0 +1,13 @@
+<nz-tabset>
+  <nz-tab nzTitle="text"><div innerHtml="{{text}}"></div></nz-tab>
+  <nz-tab nzTitle="ner Person">  
+
+    <nz-tag *ngFor="let item of ner?.PERSON" >{{item}}</nz-tag>        
+</nz-tab>
+  <nz-tab nzTitle="ner Location"> 
+    <nz-tag *ngFor="let item of ner?.LOCATION" >{{item}}</nz-tag>        
+</nz-tab>
+  <nz-tab nzTitle="ner Organization">  
+    <nz-tag *ngFor="let item of ner?.ORGANIZATION" >{{item}}</nz-tag>        
+  </nz-tab>
+</nz-tabset>

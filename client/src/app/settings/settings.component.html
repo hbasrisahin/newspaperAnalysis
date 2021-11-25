@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="form-group">
+        <div class="form-item">
+            <div class="label">
+                N-Gram
+            </div>
+            <div class="item">
+                <nz-switch [(ngModel)]="switchValue"></nz-switch>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="label">
+                min-Gram
+            </div>
+            <div class="item">
+                <nz-input-number [(ngModel)]="minGram" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="label">
+                max-Gram
+            </div>
+            <div class="item">
+                <nz-input-number [(ngModel)]="maxGram" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+            </div>
+        </div>
+
+        <button nz-button nzType="primary" (click)="submit()">Uygula</button>
+
+    </div>
+    
+
+
+</div>

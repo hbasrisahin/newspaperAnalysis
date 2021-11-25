@@ -1,0 +1,7 @@
+<div class="image" *ngIf="!loading">
+    <img [src]="image"/>
+</div>
+
+<div class="example" *ngIf="loading">
+    <nz-spin nzSimple></nz-spin>
+</div>

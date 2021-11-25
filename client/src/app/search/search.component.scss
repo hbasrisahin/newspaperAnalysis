@@ -1,0 +1,43 @@
+.container{
+    min-height: calc(100vh - 64px);
+    padding:5%;
+}
+
+.checkbox-group{
+    padding:1rem 1rem 1rem 1rem;
+    display:flex;
+    justify-content: flex-start;
+
+}
+
+.form-group{
+    display:flex;
+    flex-direction: row;
+
+    .form-item{
+        padding:0 1rem 0 1rem;
+    }
+
+    .form-item-input{
+        flex-grow: 1;
+        padding:0 1rem 0 1rem;
+    }
+}
+
+.table{
+    padding:1rem 1rem 1rem 1rem;
+}
+
+.response-time{
+    display: flex;
+    flex-wrap: nowrap;
+    padding-top: 20px;
+    padding-right: 50px;
+    justify-content: space-around;
+    div{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+}

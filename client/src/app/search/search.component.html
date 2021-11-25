@@ -1,0 +1,97 @@
+<div class="container">
+  <nz-card style="width:100%;">
+    <div class="checkbox-group">
+      <nz-checkbox-group [(ngModel)]="checkOptionsOne"></nz-checkbox-group>
+    </div>  
+  <div class="form-group">
+
+    <div class="form-item">
+      <nz-date-picker nzMode="year"
+      nzPlaceHolder="Start"
+      [(ngModel)]="startDate"
+      ></nz-date-picker>
+    </div>
+    <div class="form-item">
+      <nz-date-picker nzMode="year"
+      [(ngModel)]="endDate"
+      nzPlaceHolder="End"
+      ></nz-date-picker>
+    </div>
+    <div class="form-item-input">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" 
+        nz-input 
+        [(ngModel)]="keyword"
+        placeholder="Keyword"
+         />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </div>
+  
+    
+    <div class="form-item">
+      <button nz-button nzType="primary" (click)="search()">Ara</button>
+
+    </div>
+  </div>
+</nz-card>
+<div class="response-time">
+  <div class="ngram">
+    Ngram <br>
+    <nz-switch [(ngModel)]="isNgram"></nz-switch>
+  </div>
+  <div class="ngram">
+    Cluster <br>
+    <nz-switch [(ngModel)]="isCluster"></nz-switch>
+  </div>
+  <div class="standart-time">
+    standart time / count <br>
+    <span>{{responseTime}} ms / {{listOfData.length}}</span>
+  </div>
+  <div class="ngram-time">
+    n gram time / count <br>
+    <span>{{responseTimeNgram}} ms / {{listOfDataNgram.length}}</span>
+  </div>
+  <div class="standart-time">
+    cluster time / count <br>
+    <span>{{responseTimeCluster}} ms / {{listOfDataCluster.length}}</span>
+  </div>
+  <div class="standart-time">
+    cluster n gram time / count <br>
+    <span>{{responseTimeNgramCluster}} ms / {{listOfDataNgramCluster.length}}</span>
+  </div>
+</div>
+  <div class="table">
+    <nz-table #basicTable [nzData]="isCluster?
+                                      isNgram?listOfDataNgramCluster:listOfDataCluster:
+                                      isNgram?listOfDataNgram:listOfData">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Text</th>
+          <th>Png download</th>
+          <th>Paper source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.name }}</td>
+          <td>{{ data.date }}</td>
+          <td>{{ data.text.slice(0,400) }} ... <a (click)="openDetail(data)"> daha fazla</a></td>
+          <td>
+            <a (click)="viewImage(data)">png Download</a>
+          </td>
+          <td>
+            <a [href]="data.url" target="_blank">Paper source</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+ 
+</div>
+
+
