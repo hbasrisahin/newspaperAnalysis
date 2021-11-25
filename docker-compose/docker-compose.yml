@@ -1,53 +1,6 @@
 version: '3.3'
 
 services:
-  # elasticsearch:
-  #   container_name: elasticsearch
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:$ELK_VERSION
-  #   volumes:
-  #     - type: volume
-  #       source: elasticsearch
-  #       target: /usr/share/elasticsearch/data
-  #   ports:
-  #     - "9200:9200"
-  #     - "9300:9300"
-  #   environment:
-  #     ES_JAVA_OPTS: "-Xms512m -Xmx512m"
-  #     discovery.type: single-node
-  #     network.host: 0.0.0.0
-  #     cluster.name: "docker-cluster"
-  #   cpu_count: 1
-  #   cpus: 0.6
-  #   cpu_percent: 30
-  #   mem_limit: 1000m
-  #   networks:
-  #     - fourplusone
-    # restart: always
-
-  # logstash:
-  #   container_name: logstash
-  #   image: docker.elastic.co/logstash/logstash:$ELK_VERSION
-  #   volumes:
-  #     - type: bind
-  #       source: ./config/logstash.yml
-  #       target: /usr/share/logstash/config/logstash.yml
-  #       read_only: true
-  #     - type: bind
-  #       source: ./pipeline
-  #       target: /usr/share/logstash/pipeline
-  #       read_only: true
-  #   ports:
-  #     - "5000:5000/tcp"
-  #     - "5000:5000/udp"
-  #     - "9600:9600"
-  #   environment:
-  #     LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-  #   networks:
-  #     - fourplusone
-  #   depends_on:
-  #     - elasticsearch
-  #   # restart: always
-
   kibana:
     container_name: kibana
     image: docker.elastic.co/kibana/kibana:$ELK_VERSION
@@ -60,40 +13,6 @@ services:
       - "5601:5601"
     networks:
       - fourplusone
-    # restart: always
-    
-  # solr:
-    # container_name: solr
-    # image: solr:$SOLR_VERSION
-    # volumes:
-      # - type: volume
-        # source: solr
-        # target: /var/solr
-    # ports:
-      # - "8983:8983"
-    # networks:
-      # - fourplusone
-    # command:
-      # - solr-precreate
-      # - gettingstarted
-  
-    # restart: always
-
-  couchdb:
-    container_name: couchdb
-    image: couchdb:$COUCHDB_VERSION
-    volumes:
-      - type: volume
-        source: couchdb
-        target: /opt/couchdb/data
-    ports:
-      - "5984:5984"
-    networks:
-      - fourplusone
-    environment:
-      COUCHDB_USER: $COUCHDB_USER
-      COUCHDB_PASSWORD: $COUCHDB_PASSWORD
-    # restart: always
 
   client:
     build: ../client
@@ -102,7 +21,6 @@ services:
       - "3000:3000"
     networks:
       - fourplusone
-    # restart: always
 
   api:
     build: ../api
@@ -111,7 +29,6 @@ services:
       - "4000:4000"
     networks:
       - fourplusone
-    # restart: always
 
 
   kib01:
@@ -120,8 +37,8 @@ services:
     ports:
       - 15601:5601
     environment:
-      ELASTICSEARCH_URL: http://34.79.146.212:9200
-      ELASTICSEARCH_HOSTS: '["http://34.79.146.212:9200","http://34.140.95.186:9200","http://34.79.234.174:9200"]'
+      ELASTICSEARCH_URL: http://10.132.0.10:9200
+      ELASTICSEARCH_HOSTS: '["http://10.132.0.10:9200","http://10.132.0.11:9200","http://10.132.0.12:9200"]'
     networks:
       - fourplusone
 
@@ -130,17 +47,4 @@ networks:
   fourplusone:
     driver: bridge
 
-volumes:
-  solr:
-    driver: local
-  couchdb:
-    driver: local
-  elasticsearch:
-    driver: local
-  data01:
-    driver: local
-  data02:
-    driver: local
-  data03:
-    driver: local
 

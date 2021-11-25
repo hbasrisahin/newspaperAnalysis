@@ -19,7 +19,7 @@ export class PaperService{
 
 
   private search(searchModel:SearchModel,index:string){
-    return this.http.get<Gazete[]>('http://localhost:4000/query?keyword='
+    return this.http.get<Gazete[]>('http://10.132.0.2:4000/query?keyword='
     +searchModel.keyword+'&start_date='
     +searchModel.startDate.getFullYear()+'_01_01&end_date='
     +searchModel.endDate.getFullYear()+'_12_31&index='
