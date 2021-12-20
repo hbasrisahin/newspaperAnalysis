@@ -66,34 +66,34 @@ export class SearchComponent implements OnInit {
       isNgram: false
     }
 
-    let date=new Date().getTime();
+    const date1=new Date().getTime();
     this.paperService.getPaper(model).subscribe(respose=>{
-      this.responseTime=new Date().getTime()- date;
+      this.responseTime=new Date().getTime()- date1;
       this.listOfData =respose;
       console.log(respose);
     })
 
     model.isNgram=true;
-    date=new Date().getTime();
+    const date2=new Date().getTime();
     this.paperService.getPaper(model).subscribe(respose=>{
-      this.responseTimeNgram=new Date().getTime()- date;
+      this.responseTimeNgram=new Date().getTime()- date2;
       this.listOfDataNgram =respose;
       console.log(respose);
     })
 
     model.isCluster=true;
     model.isNgram=false;
-    date=new Date().getTime();
+    const date3=new Date().getTime();
     this.paperService.getPaper(model).subscribe(respose=>{
-      this.responseTimeCluster=new Date().getTime()- date;
+      this.responseTimeCluster=new Date().getTime()- date3;
       this.listOfDataCluster =respose;
       console.log(respose);
     })
 
     model.isNgram=true;
-    date=new Date().getTime();
+    const date4=new Date().getTime();
     this.paperService.getPaper(model).subscribe(respose=>{
-      this.responseTimeNgramCluster =new Date().getTime()- date;
+      this.responseTimeNgramCluster =new Date().getTime()- date4;
       this.listOfDataNgramCluster =respose;
       console.log(respose);
     })
